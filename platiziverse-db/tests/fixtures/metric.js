@@ -1,10 +1,12 @@
 'use strict'
 
+const agentFixtures = require('./agent')
+
 const metric = {
   id: 1,
   type: 'metric type',
   value: 'some random value for a metric',
-  agentId: 1,
+  agent: agentFixtures.byUuid('yyy-yyy-yyy'),
   createdAt: new Date(),
   updatedAt: new Date()
 }
@@ -13,8 +15,8 @@ const metrics = [
   metric,
   extend(metric, {id: 2}),
   extend(metric, {id: 3, type: 'another type'}),
-  extend(metric, {id: 4, agentId: 2}),
-  extend(metric, {id: 5, type: 'random type', agentId: 3, value: 'another random value for a metric'})
+  extend(metric, {id: 4, agent: agentFixtures.byUuid('yyy-yyy-yyx')}),
+  extend(metric, {id: 5, type: 'random type', agent: agentFixtures.byUuid('yyy-yyy-yyz'), value: 'another random value for a metric'})
 ]
 
 function extend (obj, values) {
@@ -24,5 +26,7 @@ function extend (obj, values) {
 
 module.exports = {
   single: metric,
-  all: metrics
+  all: metrics,
+  byUuid: uuid => metrics.filter(m => m.agent.uuid === uuid),
+  byTypeUuid: (type, uuid) => metrics.filter(m => m.type === type && m.agent.uuid === uuid)
 }
