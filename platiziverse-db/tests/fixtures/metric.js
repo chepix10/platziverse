@@ -24,9 +24,30 @@ function extend (obj, values) {
   return Object.assign(clone, values)
 }
 
+function byUuid (uuid) {
+  return metrics.filter(m => m.agent.uuid === uuid)
+    .map(m => {
+      const clone = Object.assign({}, m)
+      delete clone.agent
+      delete clone.id
+      delete clone.createdAt
+      delete clone.value
+      return clone
+    })
+}
+
+function byTypeUuid (type, uuid) {
+  return metrics.filter(m => m.type === type && m.agent.uuid === uuid)
+    .map(m => {
+      const clone = Object.assign({}, m)
+      delete clone.agent
+      return clone
+    })
+}
+
 module.exports = {
   single: metric,
   all: metrics,
-  byUuid: uuid => metrics.filter(m => m.agent.uuid === uuid),
-  byTypeUuid: (type, uuid) => metrics.filter(m => m.type === type && m.agent.uuid === uuid)
+  byUuid,
+  byTypeUuid
 }
