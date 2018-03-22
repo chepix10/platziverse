@@ -4,20 +4,25 @@ const debug = require('debug')('platziverse:db:setup')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const db = require('./')
+const minimist = require('minimist')
 
 const prompt = inquirer.createPromptModule()
 
 async function setup () {
-  const answer = await prompt([
-    {
-      type: 'confirm',
-      name: 'setup',
-      message: 'This will destroy your database, are you sure?'
-    }
-  ])
+  const scriptArgs = minimist(process.argv.slice(2), {})
 
-  if (!answer.setup) {
-    return console.log('Nothing happened :)')
+  if (!scriptArgs.y) {
+    const answer = await prompt([
+      {
+        type: 'confirm',
+        name: 'setup',
+        message: 'This will destroy your database, are you sure?'
+      }
+    ])
+
+    if (!answer.setup) {
+      return console.log('Nothing happened :)')
+    }
   }
 
   const config = {
