@@ -1,0 +1,33 @@
+{
+  "name": "platziverse-mqtt",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Simple IoT Platform - MQTT Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "start-dev": "DEBUG=platziverse:* nodemon server.js",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chepix10/platziverse.git"
+  },
+  "author": "José Luis Morales Ruiz <jlmruiz@outlook.com> (https://twitter.com/Iron_Chepe)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chepix10/platziverse/issues"
+  },
+  "homepage": "https://github.com/chepix10/platziverse#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.2",
+    "standard": "^11.0.1"
+  },
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "debug": "^3.1.0",
+    "mosca": "^2.8.0",
+    "platiziverse-db": "file:../platziverse-db",
+    "redis": "^2.8.0"
+  }
+}
