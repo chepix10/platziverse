@@ -6,7 +6,7 @@ const redis = require('redis')
 const chalk = require('chalk')
 const db = require('platiziverse-db')
 const config = require('../platziverse-db/config')({ setup: false })
-const { parsePayload } = require('./utils')
+const { parsePayload } = require('platziverse-utils')
 
 const backend = {
   type: 'redis',
@@ -76,7 +76,7 @@ server.on('published', async (packet, client) => {
 
         let agent
         try {
-          agent = Agent.createOrUpdate(payload.agent)
+          agent = await Agent.createOrUpdate(payload.agent)
         } catch (e) {
           return handleError(e)
         }
@@ -134,7 +134,7 @@ function handleFatalError (err) {
 }
 
 function handleError (err) {
-  console.error(`${chalk.red('[fatal error]')} ${err.message}`)
+  console.error(`${chalk.red('[error]')} ${err.message}`)
   console.error(err.stack)
 }
 
