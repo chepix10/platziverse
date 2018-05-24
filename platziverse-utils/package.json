@@ -1,8 +1,7 @@
 {
-  "name": "platziverse-agent",
+  "name": "platziverse-utils",
   "version": "1.0.0",
-  "private": true,
-  "description": "A Simple IoT Platform - Agent",
+  "description": "A Simple IoT Platform - Utils Module",
   "main": "index.js",
   "scripts": {
     "lint": "standard"
@@ -19,12 +18,5 @@
   "homepage": "https://github.com/chepix10/platziverse#readme",
   "devDependencies": {
     "standard": "^11.0.1"
-  },
-  "dependencies": {
-    "debug": "^3.1.0",
-    "defaults": "^1.0.3",
-    "mqtt": "^2.18.0",
-    "platziverse-utils": "file:../platziverse-utils",
-    "uuid": "^3.2.1"
   }
 }
