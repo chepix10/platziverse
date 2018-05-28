@@ -91,7 +91,9 @@ test.serial.cb('/api/agent/:uuid - not found', t => {
     .end((err, res) => {
       t.falsy(err, 'should not return an error')
       let body = JSON.stringify(res.body)
-      let expected = JSON.stringify({ error: new Errors.AgentNotFoundError(uuidNotFound).message})
+      let expected = JSON.stringify({
+        error: new Errors.AgentNotFoundError(uuidNotFound).message
+      })
       t.deepEqual(body, expected, 'response body should be the expected')
       t.end()
     })
@@ -119,7 +121,9 @@ test.serial.cb('/api/metrics/:uuid - not found', t => {
     .end((err, res) => {
       t.falsy(err, 'sholud not return an error')
       let body = JSON.stringify(res.body)
-      let expected = JSON.stringify({ error: new Errors.MetricsNotFoundError(uuidNotFound).message})
+      let expected = JSON.stringify({
+        error: new Errors.MetricsNotFoundError(uuidNotFound).message
+      })
       t.deepEqual(body, expected, 'response body should be the expected')
       t.end()
     })
@@ -147,7 +151,9 @@ test.serial.cb('/api/metrics/:uuid/:type - not found', t => {
     .end((err, res) => {
       t.falsy(err, 'sholud not return an error')
       let body = JSON.stringify(res.body)
-      let expected = JSON.stringify({ error: new Errors.MetricsNotFoundError(uuidNotFound, type).message})
+      let expected = JSON.stringify({
+        error: new Errors.MetricsNotFoundError(uuidNotFound, type).message
+      })
       t.deepEqual(body, expected, 'response body should be the expected')
       t.end()
     })
