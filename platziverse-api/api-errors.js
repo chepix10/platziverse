@@ -14,7 +14,7 @@ class AgentNotFoundError extends Error {
 
 class MetricsNotFoundError extends Error {
   constructor (uuid, type) {
-    super(`Metrics of Agent with uuid ${uuid} ${type ? `and type ${type}` : ''} not found`)
+    super(`Metrics of Agent with uuid ${uuid}${type ? ` and type ${type}` : ''} not found`)
     this.uuid = uuid
     this.type = type || null
     this.httpStatusCode = 404
