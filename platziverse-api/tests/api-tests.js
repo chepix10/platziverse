@@ -1,18 +1,22 @@
 'use strict'
 
 const test = require('ava')
+const util = require('util')
 const request = require('supertest')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const AgentFixtures = require('../../platziverse-db/tests/fixtures/agent')
 const MetricFixtures = require('../../platziverse-db/tests/fixtures/metric')
 const Errors = require('./../api-errors')
+const auth = require('../auth')
+const sign = util.promisify(auth.sign)
 
 let sandbox = null
 let server = null
 let dbStub = null
 let AgentStub = {}
 let MetricStub = {}
+let token = null
 
 let uuid = 'yyy-yyy-yyy'
 let uuidNotFound = 'yyy-yyy-zzz'
@@ -42,6 +46,8 @@ test.beforeEach(async () => {
   MetricStub.findByTypeAgentUuid.withArgs(type, uuid).returns(Promise.resolve(MetricFixtures.byTypeUuid(type, uuid)))
   MetricStub.findByTypeAgentUuid.withArgs(type, uuidNotFound).returns(Promise.resolve(MetricFixtures.byTypeUuid(type, uuidNotFound)))
 
+  token = await sign({ admin: true, username: 'platzi'}, 'platzi')
+
   const api = proxyquire('../api', {
     'platiziverse-db': dbStub
   })
@@ -58,6 +64,7 @@ test.afterEach(() => {
 test.serial.cb('/api/agents', t => {
   request(server)
     .get('/api/agents')
+    .set('Authorization', `Bearer ${token}`)
     .expect(200)
     .expect('Content-Type', /json/)
     .end((err, res) => {
