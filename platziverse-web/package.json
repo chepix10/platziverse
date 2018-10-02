@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
+    "prestart": "npm run build",
     "start-dev": "DEBUG=platziverse:* nodemon server.js",
+    "prestart-dev": "npm run build",
+    "build": "browserify -t babelify -t vueify client/app.js -o public/bundle.js",
     "lint": "standard"
   },
   "repository": {
@@ -18,15 +21,39 @@
     "url": "https://github.com/chepix10/platziverse/issues"
   },
   "homepage": "https://github.com/chepix10/platziverse#readme",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
     "nodemon": "^1.18.4",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "vueify": "^9.4.1"
   },
   "dependencies": {
     "chalk": "^2.4.1",
+    "chart.js": "^2.7.2",
     "debug": "^4.0.1",
     "express": "^4.16.3",
+    "express-asyncify": "^1.0.0",
     "platziverse-agent": "file:../platziverse-agent",
-    "socket.io": "^2.1.1"
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "socket.io": "^2.1.1",
+    "vue": "^2.5.17",
+    "vue-chartjs": "^3.4.0"
   }
 }
