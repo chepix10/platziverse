@@ -21,9 +21,9 @@ api.get('/agents', async (req, res, next) => {
   try {
     result = await request(options)
   } catch (e) {
-    return next(e)
+    return next(new Error(e.error.error))
   }
-  return next(new Error(e.error.error))
+  res.send(result)
 })
 
 api.get('/agent/:uuid', async (req, res, next) => {
