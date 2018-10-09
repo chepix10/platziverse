@@ -20,6 +20,7 @@
   "homepage": "https://github.com/chepix10/platziverse#readme",
   "devDependencies": {
     "ava": "^0.25.0",
+    "longjohn": "^0.2.12",
     "nyc": "^11.4.1",
     "proxyquire": "^1.8.0",
     "sinon": "^4.3.0",
