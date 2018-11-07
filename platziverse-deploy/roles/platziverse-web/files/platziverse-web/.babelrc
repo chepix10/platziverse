@@ -1,0 +1,22 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": "> 0.25%, not dead"
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    }
+  },
+  "plugins": [
+    "@babel/syntax-dynamic-import",
+    "@babel/syntax-import-meta",
+    ["@babel/proposal-class-properties", { "loose": false }],
+    "@babel/proposal-json-strings",
+    "@babel/transform-runtime"
+  ]
+}

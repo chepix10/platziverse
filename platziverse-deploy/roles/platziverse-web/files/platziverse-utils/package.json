@@ -1,0 +1,22 @@
+{
+  "name": "platziverse-utils",
+  "version": "1.0.0",
+  "description": "A Simple IoT Platform - Utils Module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chepix10/platziverse.git"
+  },
+  "author": "José Luis Morales Ruiz <jlmruiz@outlook.com> (https://twitter.com/Iron_Chepe)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chepix10/platziverse/issues"
+  },
+  "homepage": "https://github.com/chepix10/platziverse#readme",
+  "devDependencies": {
+    "standard": "^11.0.1"
+  }
+}
