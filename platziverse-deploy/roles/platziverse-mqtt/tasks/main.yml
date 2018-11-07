@@ -1,0 +1,25 @@
+---
+- include: deps.yml
+- name: Copy platziverse-mqtt
+  copy:
+    src=platziverse-mqtt
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Copy platziverse-utils
+  copy:
+    src=platziverse-utils
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Running npm install
+  command: npm install
+    chdir=/usr/local/src/platziverse-mqtt
+    creates=/usr/local/src/platziverse-mqtt/node_modules
+- name: Install systemd script
+  copy:
+    src=platziverse-mqtt.service
+    dest=/lib/systemd/system
+- name: Start platziverse-mqtt
+  service:
+    name=platziverse-mqtt
+    state=restarted
+    enabled=yes

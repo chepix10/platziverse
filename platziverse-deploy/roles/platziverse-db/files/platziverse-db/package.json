@@ -1,0 +1,40 @@
+{
+  "name": "platiziverse-db",
+  "version": "1.0.0",
+  "description": "A Simple IoT Platform - DB Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "DEBUG=platziverse:* nyc --reporter=lcov ava tests/ --verbose",
+    "setup": "DEBUG=platziverse:* node setup.js",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chepix10/platziverse.git"
+  },
+  "author": "José Luis Morales Ruiz <jlmruiz@outlook.com> (https://twitter.com/Iron_Chepe)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chepix10/platziverse/issues"
+  },
+  "homepage": "https://github.com/chepix10/platziverse#readme",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "longjohn": "^0.2.12",
+    "nyc": "^11.4.1",
+    "proxyquire": "^1.8.0",
+    "sinon": "^4.3.0",
+    "sqlite3": "^3.1.13",
+    "standard": "^11.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "debug": "^3.1.0",
+    "defaults": "^1.0.3",
+    "inquirer": "^5.1.0",
+    "minimist": "^1.2.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.33.4"
+  }
+}
